@@ -1,0 +1,72 @@
+﻿@model FirstMVC.Models.ContactViewModel
+
+<div class="row">
+    <div class="col-md-8 my-2">
+        <h2>İletişim</h2>
+        <!--html helperları ile form yapısı oluşturma-->
+        @using (Html.BeginForm())
+        {
+            if (!string.IsNullOrEmpty(ViewBag.Message))
+            {
+                <div class="alert alert-success">@ViewBag.Error</div>
+            }
+            @Html.ValidationSummary(false) //validasyonlar için helper
+            <div class="form-group row">
+                @Html.LabelFor(model => model.FirstName, new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", placeholder = "Adınız" })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.LastName, new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", placeholder = "Soyadınız" })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Telephone, new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Telephone, new { @class = "form-control", placeholder = "Telefonunuz" })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Email, new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "E-posta adresiniz" })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Message, new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Message, new { @class = "form-control", placeholder = "Mesajınız" })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group-row">
+                @Html.CheckBoxFor(model => model.PrivacyPolicyAccepted)
+                <label for="PrivacyPolicyAccepted"><a href="@Url.Action("Kvkk", "Home")" target="_blank">KVKK Aydınlatma Metnini okudum ve kabul ediyorum.</a></label>
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+            <button type="submit" class="btn btn-primary">Gönder</button>
+        }
+    </div>
+    <div class="col-md-4 my-4">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d188.07105659077303!2d29.006848627172648!3d41.04413510216454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab7a24975fe5d%3A0xa05d7aa13cfcaf89!2sWissen!5e0!3m2!1str!2str!4v1563435148924!5m2!1str!2str" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <div style="padding:10px">
+            <a href="https://www.instagram.com/busozdmr/"><i class="fab fa-instagram"></i>  instagram/busozdmr</a><br />
+            <a href="https://twitter.com/ozdemirbussra"><i class="fab fa-twitter-square"></i>  twitter/ozdemirbussra</a><br />
+            <a href="https://tr.linkedin.com/in/busraozdemir"><i class="fab fa-linkedin"></i>  linkedin/busraozdemir</a><br />
+            <a href="https://github.com/BusraOzdmr"><i class="fab fa-github-square"></i>  github/BusraOzdmr</a><br />
+        </div>
+    </div>
+
+</div>
